@@ -12,8 +12,28 @@
   align-items: center;
 }
 
+.header__logo-date {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
 .header__avatar-logo {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+.header__avatar-button {
+  background-color: transparent;
+  border: none;
+  width: 116px;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.header__avatar-name {
+  font-size: 20px;
+  line-height: 1.2;
 }

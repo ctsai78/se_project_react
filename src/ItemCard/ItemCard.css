@@ -1,9 +1,22 @@
+.card {
+  position: relative;
+}
+
 .card_name {
   text-align: center;
+  background-color: rgba(255, 255, 255, 1);
+  background-size: contain;
+  position: relative;
+  top: -311px;
+  width: fit-content;
+  padding: 0 10px 0 10px;
+  border-radius: 4px;
+  margin: auto;
 }
 
 .card_image {
   width: 328px;
   height: 328px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }

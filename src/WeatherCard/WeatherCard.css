@@ -4,10 +4,13 @@
 
 .weather_info {
   position: absolute;
-  top: 15px;
+  top: 10px;
   left: 16px;
   color: white;
   font-size: 36px;
+  font-weight: 700;
+  line-height: 1.2;
+  height: 40px;
 }
 
 .weather_image {
