@@ -35,6 +35,11 @@
   padding: 0;
 }
 
+.header__avatar-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .header__avatar-name {
   font-size: 20px;
   line-height: 1.2;

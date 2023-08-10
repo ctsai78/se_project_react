@@ -23,3 +23,8 @@
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
+
+.card_image:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

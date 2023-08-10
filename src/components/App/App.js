@@ -2,7 +2,7 @@ import logo from "../../logo.svg";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import Footer from "../Footerr/Footer";
+import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
@@ -41,7 +41,11 @@ function App() {
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm title="New Garment" onClose={handleCloseModal}>
+        <ModalWithForm
+          title="New Garment"
+          buttonText="Add garment"
+          onClose={handleCloseModal}
+        >
           <label>
             <h3 className="modal_form-input-title">Name</h3>
             <input

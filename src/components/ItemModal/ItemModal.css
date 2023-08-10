@@ -10,6 +10,11 @@
   z-index: 1;
 }
 
+.modal_item-close-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .modal_content-image {
   background-color: white;
   max-width: 496px;
