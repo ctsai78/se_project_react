@@ -1,8 +1,6 @@
 import "./ItemModal.css";
 
 const ItemModal = ({ selectedCard, onClose }) => {
-  console.log("Item modal");
-
   return (
     <div className={`modal`}>
       <div className="modal_content-image">

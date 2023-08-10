@@ -2,7 +2,7 @@ import logo from "../../logo.svg";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import Footer from "../footer/Footer";
+import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
@@ -27,10 +27,12 @@ function App() {
   };
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      const temperature = parseWeatherData(data);
-      setTemp(temperature);
-    });
+    getForecastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
+        setTemp(temperature);
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -64,16 +66,16 @@ function App() {
           </label>
           <p className="modal_selection-title">Select the weather type:</p>
           <div className="modal_selection">
-            <div>
-              <input type="radio" id="hot" value="hot" />
+            <div className="modal_selection-item">
+              <input type="radio" id="hot" value="hot" name="weather" />
               <label>Hot</label>
             </div>
-            <div>
-              <input type="radio" id="warm" value="warm" />
+            <div className="modal_selection-item">
+              <input type="radio" id="warm" value="warm" name="weather" />
               <label>warm</label>
             </div>
-            <div>
-              <input type="radio" id="cold" value="cold" />
+            <div className="modal_selection-item">
+              <input type="radio" id="cold" value="cold" name="weather" />
               <label>cold</label>
             </div>
           </div>

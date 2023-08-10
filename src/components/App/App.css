@@ -6,7 +6,6 @@
   width: 440px;
   border-bottom: solid 1px;
   border-color: rgba(0, 0, 0, 1);
-
   font-size: 14px;
   line-height: 1;
   font-family: "CabinetGrotesk-Bold", "Arial Narrow", Arial, sans-serif;
@@ -15,4 +14,10 @@
 
 .modal_form-input-title {
   margin: 0;
+}
+
+.modal_selection-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
 }
