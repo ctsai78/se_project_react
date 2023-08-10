@@ -1,2 +1,18 @@
 @import url(./vendor/fonts.css);
 @import url(./vendor/normalize.css);
+
+.modal_form-input {
+  border: none;
+  width: 440px;
+  border-bottom: solid 1px;
+  border-color: rgba(0, 0, 0, 1);
+
+  font-size: 14px;
+  line-height: 1;
+  font-family: "CabinetGrotesk-Bold", "Arial Narrow", Arial, sans-serif;
+  font-size: 16px;
+}
+
+.modal_form-input-title {
+  margin: 0;
+}

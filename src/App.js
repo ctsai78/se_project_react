@@ -41,15 +41,29 @@ function App() {
       {activeModal === "create" && (
         <ModalWithForm title="New Garment" onClose={handleCloseModal}>
           <label>
-            Name
-            <input type="text" name="name" minLength="1" maxLength="30"></input>
+            <h3 className="modal_form-input-title">Name</h3>
+            <input
+              className="modal_form-input"
+              type="text"
+              name="name"
+              placeholder="name"
+              minLength="1"
+              maxLength="30"
+            ></input>
           </label>
           <label>
-            Image
-            <input type="url" name="link" minLength="1" maxLength="30"></input>
+            <h3 className="modal_form-input-title">Image</h3>
+            <input
+              className="modal_form-input"
+              type="url"
+              name="link"
+              placeholder="image URL"
+              minLength="1"
+              maxLength="30"
+            ></input>
           </label>
-          <p>Select the weather type:</p>
-          <div>
+          <p className="modal_selection-title">Select the weather type:</p>
+          <div className="modal_selection">
             <div>
               <input type="radio" id="hot" value="hot" />
               <label>Hot</label>
