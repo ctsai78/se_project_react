@@ -2,10 +2,10 @@ import "./Header.css";
 import logoImage from "../../images/logo.svg";
 import avatarImage from "../../images/avatar.svg";
 
-let date = new Date();
-let month = date.toLocaleString("default", { month: "long" });
-let day = date.getDate();
-let formattedDate = `${month} ${day}, New York`;
+const date = new Date();
+const month = date.toLocaleString("default", { month: "long" });
+const day = date.getDate();
+const formattedDate = `${month} ${day}, New York`;
 
 const Header = ({ onCreateModal }) => {
   return (
