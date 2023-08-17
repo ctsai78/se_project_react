@@ -4,15 +4,18 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
-import { useEffect } from "react";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -26,6 +29,15 @@ function App() {
     setSelectedCard(card);
   };
 
+  const onAddItem = (values) => {
+    console.log(values);
+  };
+
+  const handleToggleSwitchChange = () => {
+    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+  };
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -37,57 +49,28 @@ function App() {
 
   return (
     <div>
-      <Header onCreateModal={handleCreateModal} />
-      <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
-      <Footer />
-      {activeModal === "create" && (
-        <ModalWithForm
-          title="New Garment"
-          buttonText="Add garment"
-          onClose={handleCloseModal}
-        >
-          <label>
-            <h3 className="modal_form-input-title">Name</h3>
-            <input
-              className="modal_form-input"
-              type="text"
-              name="name"
-              placeholder="name"
-              minLength="1"
-              maxLength="30"
-            ></input>
-          </label>
-          <label>
-            <h3 className="modal_form-input-title">Image</h3>
-            <input
-              className="modal_form-input"
-              type="url"
-              name="link"
-              placeholder="image URL"
-              minLength="1"
-              maxLength="30"
-            ></input>
-          </label>
-          <p className="modal_selection-title">Select the weather type:</p>
-          <div className="modal_selection">
-            <div className="modal_selection-item">
-              <input type="radio" id="hot" value="hot" name="weather" />
-              <label>Hot</label>
-            </div>
-            <div className="modal_selection-item">
-              <input type="radio" id="warm" value="warm" name="weather" />
-              <label>warm</label>
-            </div>
-            <div className="modal_selection-item">
-              <input type="radio" id="cold" value="cold" name="weather" />
-              <label>cold</label>
-            </div>
-          </div>
-        </ModalWithForm>
-      )}
-      {activeModal === "preview" && (
-        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
-      )}
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <Header onCreateModal={handleCreateModal} />
+        <Switch>
+          <Route exact path="/">
+            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+          </Route>
+          <Route path="/profile">Profile</Route>
+        </Switch>
+        <Footer />
+        {activeModal === "create" && (
+          <AddItemModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "create"}
+            onAddItem={onAddItem}
+          />
+        )}
+        {activeModal === "preview" && (
+          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+        )}
+      </CurrentTemperatureUnitContext.Provider>
     </div>
   );
 }
