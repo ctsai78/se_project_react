@@ -1,0 +1,23 @@
+.clothes-section {
+}
+
+.clothes-section__title {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  font-family: "CabinetGrotesk-Bold", "Arial Narrow", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.clothes-section__button {
+  color: rgba(0, 0, 0, 0.6);
+  background-color: transparent;
+  border: none;
+}
+
+.clothes-section__card {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}

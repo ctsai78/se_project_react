@@ -33,10 +33,24 @@
   top: -20px;
 }
 
+.modal_description-section {
+  display: flex;
+  justify-content: space-between;
+}
+
 .modal_description {
   font-size: 20px;
   line-height: 1.2;
   margin-left: 32px;
+  margin-bottom: 20px;
+  font-family: "CabinetGrotesk-Bold", "Arial Narrow", Arial, sans-serif;
+}
+
+.modal_delete {
+  color: red;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-right: 32px;
   margin-bottom: 20px;
   font-family: "CabinetGrotesk-Bold", "Arial Narrow", Arial, sans-serif;
 }
