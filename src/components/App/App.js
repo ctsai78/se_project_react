@@ -18,7 +18,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  // const [clothingItems, setClothingItems] = useState([]);
+  const [clothingItems, setClothingItems] = useState([]);
 
   /* -------------------------------- handlers -------------------------------- */
   const handleCreateModal = () => {
@@ -60,6 +60,14 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
   /* -------------------------------------------------------------------------- */
+  useEffect(() => {
+    api
+      .getItemList()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     getForecastWeather()
@@ -69,6 +77,7 @@ function App() {
       })
       .catch((err) => console.error(err));
   }, []);
+  /* --------------------------------------------------------------------------- */
 
   return (
     <div>
@@ -84,7 +93,6 @@ function App() {
             <Profile
               onSelectCard={handleSelectedCard}
               onCreateModal={handleCreateModal}
-              onCardDelete={handleCardDelete}
             />
           </Route>
         </Switch>
@@ -97,7 +105,11 @@ function App() {
           />
         )}
         {activeModal === "preview" && (
-          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+          <ItemModal
+            selectedCard={selectedCard}
+            onClose={handleCloseModal}
+            onCardDelete={handleCardDelete}
+          />
         )}
       </CurrentTemperatureUnitContext.Provider>
     </div>
