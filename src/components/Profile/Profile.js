@@ -3,11 +3,14 @@ import "./Profile.css";
 import SideBar from "./SideBar/SideBar";
 import ClothesSection from "./ClothesSection/ClothesSection";
 
-const Profile = () => {
+const Profile = ({ onSelectCard, onCreateModal }) => {
   return (
     <div className="Profile">
       <SideBar />
-      <ClothesSection />
+      <ClothesSection
+        onSelectCard={onSelectCard}
+        onCreateModal={onCreateModal}
+      />
     </div>
   );
 };

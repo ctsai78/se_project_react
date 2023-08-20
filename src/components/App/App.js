@@ -11,6 +11,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
+import api from "../../utils/api";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -19,6 +20,7 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   // const [clothingItems, setClothingItems] = useState([]);
 
+  /* -------------------------------- handlers -------------------------------- */
   const handleCreateModal = () => {
     setActiveModal("create");
   };
@@ -42,10 +44,22 @@ function App() {
     console.log(item);
   };
 
+  const handleCardDelete = (card) => {
+    // api
+    //   .removeItem(card.id)
+    //   .then(() => {
+    //     setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+    //     handleCloseModal();
+    //   })
+    //   .catch((err) => console.log(err));
+    console.log(card);
+  };
+
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
+  /* -------------------------------------------------------------------------- */
 
   useEffect(() => {
     getForecastWeather()
@@ -67,15 +81,19 @@ function App() {
             <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
           </Route>
           <Route path="/profile">
-            <Profile />
+            <Profile
+              onSelectCard={handleSelectedCard}
+              onCreateModal={handleCreateModal}
+              onCardDelete={handleCardDelete}
+            />
           </Route>
         </Switch>
         <Footer />
         {activeModal === "create" && (
           <AddItemModal
             handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "create"}
             onAddItem={handleAddItemSubmit}
+            isOpen={activeModal === "create"}
           />
         )}
         {activeModal === "preview" && (
