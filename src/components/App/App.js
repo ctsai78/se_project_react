@@ -44,7 +44,7 @@ function App() {
     console.log(item);
   };
 
-  const handleCardDelete = (card) => {
+  const handleDeleteCard = (card) => {
     // api
     //   .removeItem(card.id)
     //   .then(() => {
@@ -108,7 +108,7 @@ function App() {
           <ItemModal
             selectedCard={selectedCard}
             onClose={handleCloseModal}
-            onCardDelete={handleCardDelete}
+            onDeleteCard={handleDeleteCard}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
