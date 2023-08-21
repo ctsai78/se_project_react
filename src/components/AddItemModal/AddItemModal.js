@@ -20,7 +20,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   };
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     onAddItem({ name, link, weather });
   };
   /* -------------------------------------------------------------------------- */

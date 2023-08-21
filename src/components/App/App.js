@@ -34,13 +34,13 @@ function App() {
   };
 
   const handleAddItemSubmit = (item) => {
-    // api
-    //   .addItem(item)
-    //   .then((newItem) => {
-    //     setClothingItems([newItem, ...clothingItems]);
-    //     handleCloseModal();
-    //   })
-    //   .catch((err) => console.log(err));
+    api
+      .addItem(item)
+      .then((newItem) => {
+        setClothingItems([newItem, ...clothingItems]);
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
     console.log(item);
   };
 
@@ -87,7 +87,11 @@ function App() {
         <Header onCreateModal={handleCreateModal} />
         <Switch>
           <Route exact path="/">
-            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+            <Main
+              clothingItems={clothingItems}
+              weatherTemp={temp}
+              onSelectCard={handleSelectedCard}
+            />
           </Route>
           <Route path="/profile">
             <Profile
