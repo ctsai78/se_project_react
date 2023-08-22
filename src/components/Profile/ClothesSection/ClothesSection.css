@@ -16,6 +16,11 @@
   border: none;
 }
 
+.clothes-section__button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 .clothes-section__card {
   display: flex;
   gap: 20px;

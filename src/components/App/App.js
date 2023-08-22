@@ -45,13 +45,13 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    // api
-    //   .removeItem(card.id)
-    //   .then(() => {
-    //     setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
-    //     handleCloseModal();
-    //   })
-    //   .catch((err) => console.log(err));
+    api
+      .removeItem(card.id)
+      .then(() => {
+        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
     console.log(card);
   };
 
@@ -95,6 +95,7 @@ function App() {
           </Route>
           <Route path="/profile">
             <Profile
+              cards={clothingItems}
               onSelectCard={handleSelectedCard}
               onCreateModal={handleCreateModal}
             />
