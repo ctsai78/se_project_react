@@ -41,7 +41,6 @@ function App() {
         handleCloseModal();
       })
       .catch((err) => console.log(err));
-    console.log(item);
   };
 
   const handleDeleteCard = (card) => {
@@ -52,7 +51,6 @@ function App() {
         handleCloseModal();
       })
       .catch((err) => console.log(err));
-    console.log(card);
   };
 
   const handleToggleSwitchChange = () => {
