@@ -20,7 +20,7 @@ export const parseWeatherData = (data) => {
   return weather;
 };
 
-const processServerResponse = (res) => {
+export const processServerResponse = (res) => {
   if (res.ok) {
     return res.json();
   }

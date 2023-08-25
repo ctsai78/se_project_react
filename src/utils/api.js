@@ -1,16 +1,14 @@
+import { processServerResponse } from "./weatherApi";
+
 // const baseUrl = "http://localhost:3001";
 const baseUrl = "https://my-json-server.typicode.com/ctsai78/se_project_react";
-
-const handleServerResponse = (res) => {
-  return res.ok ? res.json() : Promise.reject(`Error: $res.status`);
-};
 
 const getItemList = () => {
   return fetch(`${baseUrl}/items`, {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(handleServerResponse);
+  }).then(processServerResponse);
 };
 
 const addItem = ({ name, imageUrl, weather }) => {
@@ -20,7 +18,7 @@ const addItem = ({ name, imageUrl, weather }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, imageUrl, weather }),
-  }).then(handleServerResponse);
+  }).then(processServerResponse);
 };
 
 const removeItem = (id) => {
@@ -29,7 +27,7 @@ const removeItem = (id) => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(handleServerResponse);
+  }).then(processServerResponse);
 };
 
 const api = { getItemList, addItem, removeItem };

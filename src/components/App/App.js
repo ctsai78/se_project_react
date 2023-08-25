@@ -40,7 +40,7 @@ function App() {
         setClothingItems([newItem, ...clothingItems]);
         handleCloseModal();
       })
-      .catch((err) => console.log(err));
+      .catch(console.error);
   };
 
   const handleDeleteCard = (card) => {
@@ -50,7 +50,7 @@ function App() {
         setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
         handleCloseModal();
       })
-      .catch((err) => console.log(err));
+      .catch(console.error);
   };
 
   const handleToggleSwitchChange = () => {
@@ -64,7 +64,7 @@ function App() {
       .then((items) => {
         setClothingItems(items);
       })
-      .catch((err) => console.log(err));
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -73,8 +73,26 @@ function App() {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
       })
-      .catch((err) => console.error(err));
+      .catch(console.error);
   }, []);
+
+  useEffect(() => {
+    if (!activeModal) return; // stop the effect not to add the listener if there is no active modal
+
+    const handleEscClose = (e) => {
+      // define the function inside useEffect not to lose the reference on rerendering
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      // don't forget to add a clean up function for removing the listener
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]); // watch activeModal here
   /* --------------------------------------------------------------------------- */
 
   return (

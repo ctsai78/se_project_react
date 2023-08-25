@@ -19,7 +19,7 @@ const WeatherCard = ({
       <div className="weather_info">
         {weatherTemp} °{currentTemperatureUnit}
       </div>
-      <img className="weather_image" src={imageSrcUrl} />
+      <img className="weather_image" src={imageSrcUrl} alt="weather card" />
     </section>
   );
 };
