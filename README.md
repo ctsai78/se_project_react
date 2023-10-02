@@ -9,3 +9,6 @@ This application uses the fundamental principles of React.
 
 Link to GitHub Pages:
 https://github.com/ctsai78/se_project_react/tree/main
+
+lLnk to the back-end repo:
+https://github.com/ctsai78/se_project_express
