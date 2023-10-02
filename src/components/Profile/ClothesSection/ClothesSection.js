@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ClothesSection.css";
 import { defaultClothingItems } from "../../../utils/constants";
 import ItemCard from "../../ItemCard/ItemCard";
+import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
 const ClothesSection = ({ cards, onSelectCard, onCreateModal }) => {
+  const { currentUser } = useContext(CurrentUserContext);
+  // const filteredCards = cards.filter((item) => {
+  //   return item.owner._id === currentUser._id;
+  // });
+
   return (
     <div className="clothes-section">
       <div className="clothes-section__title">
