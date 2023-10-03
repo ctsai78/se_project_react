@@ -43,7 +43,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
         <h3 className="modal_form-input-title">Email*</h3>
         <input
           className="modal_form-input"
-          type="url"
+          type="email"
           name="link"
           value={email}
           onChange={handleEmailChange}

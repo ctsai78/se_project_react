@@ -73,15 +73,14 @@ function App() {
   };
 
   const handleSignUp = (user) => {
-    auth.creatUser(user).then((response) => {
-      try {
-        if (response.status === 200) {
-          return response.json();
-        }
-      } catch (e) {
-        return e;
-      }
-    });
+    auth
+      .creatUser(user)
+      .then((newUser) => {
+        setloggedIn(true);
+        setCurrentUser(newUser);
+        console.log(currentUser);
+      })
+      .catch(console.error);
   };
 
   const handleLoginModal = () => {
