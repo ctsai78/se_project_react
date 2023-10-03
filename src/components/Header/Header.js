@@ -12,8 +12,8 @@ const day = date.getDate();
 const formattedDate = `${month} ${day}, New York`;
 /* -------------------------------------------------------------------------- */
 
-const Header = ({ onCreateModal, onSignUpModal, onLogInModal }) => {
-  const { CurrentUser } = useContext(CurrentUserContext);
+const Header = ({ onCreateModal, onSignUpModal, onLogInModal, loggedIn }) => {
+  const { currentUser } = useContext(CurrentUserContext);
   return (
     <header className="header">
       <div className="header__logo">
@@ -24,27 +24,31 @@ const Header = ({ onCreateModal, onSignUpModal, onLogInModal }) => {
         </div>
         <div className="header__logo-date">{formattedDate}</div>
       </div>
-      <div className="header__avatar-logo">
+      <div className="header__logo-info">
         <ToggleSwitch />
-        <div>
-          <button
-            className="header__avatar-button"
-            type="text"
-            onClick={onCreateModal}
-          >
-            +Add Clothes
-          </button>
-          <button onClick={onSignUpModal}>Sign Up</button>
-          <button onClick={onLogInModal}>Log In</button>
-        </div>
-        <Link to="/profile" className="header__avatar-name">
-          {/* ${CurrentUser.name}  */}
-          Terrence Tegegne
-        </Link>
-        <div>
-          <img src={avatarImage} alt="avatar" />
-          {/* <img src={CurrentUser.avatar} alt="avatar" /> */}
-        </div>
+        {loggedIn ? (
+          <div className="header__avatar-logo">
+            <button
+              className="header__avatar-button"
+              type="text"
+              onClick={onCreateModal}
+            >
+              +Add Clothes
+            </button>
+            <Link to="/profile" className="header__avatar-name">
+              {/* ${currentUser.name}  */}
+              Terrence Tegegne
+            </Link>
+
+            <img src={avatarImage} alt="avatar" />
+            {/* <img src={currentUser.avatar} alt="avatar" /> */}
+          </div>
+        ) : (
+          <div>
+            <button onClick={onSignUpModal}>Sign Up</button>
+            <button onClick={onLogInModal}>Log In</button>
+          </div>
+        )}
       </div>
     </header>
   );

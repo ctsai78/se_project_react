@@ -19,10 +19,16 @@
   font-weight: 700;
 }
 
-.header__avatar-logo {
+.header__logo-info {
   display: flex;
   gap: 20px;
   align-items: center;
+}
+
+.header__avatar-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .header__avatar-button {

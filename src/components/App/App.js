@@ -18,6 +18,7 @@ import api from "../../utils/api";
 import auth from "../../utils/auth";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../Profile/EditProfileModal/EditProfileModal";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  const [loggedIn, setloggedIn] = useState(true);
+  const [loggedIn, setloggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
 
   /* -------------------------------- handlers -------------------------------- */
@@ -96,6 +97,11 @@ function App() {
       .catch(console.error);
   };
 
+  const handleEditProfileModal = () => {
+    setActiveModal("editProfile");
+  };
+
+  const handleSaveChanges = () => {};
   /* ----------------------------- useEffect Hooks ---------------------------- */
   useEffect(() => {
     api
@@ -125,7 +131,7 @@ function App() {
     };
     document.addEventListener("keydown", handleEscClose);
     return () => {
-      // don't forget to add a clean up function for removing the listener
+      // add a clean up function for removing the listener
       document.removeEventListener("keydown", handleEscClose);
     };
   }, [activeModal]); // watch activeModal here
@@ -159,6 +165,7 @@ function App() {
             onCreateModal={handleCreateModal}
             onSignUpModal={handleSignupModal}
             onLogInModal={handleLoginModal}
+            loggedIn={loggedIn}
           />
           <Switch>
             <Route exact path="/">
@@ -174,6 +181,7 @@ function App() {
                 cards={clothingItems}
                 onSelectCard={handleSelectedCard}
                 onCreateModal={handleCreateModal}
+                onEditProfile={handleEditProfileModal}
               />
             </Route>
           </Switch>
@@ -204,6 +212,12 @@ function App() {
               handleCloseModal={handleCloseModal}
               onLogin={handleLogIn}
               onSignUpModal={handleSignupModal}
+            />
+          )}
+          {activeModal === "editProfile" && (
+            <EditProfileModal
+              handleCloseModal={handleCloseModal}
+              onSaveChanges={handleSaveChanges}
             />
           )}
         </CurrentUserContext.Provider>

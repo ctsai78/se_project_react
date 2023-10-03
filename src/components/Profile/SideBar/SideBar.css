@@ -1,8 +1,11 @@
 .sidebar {
-  display: flex;
   margin-right: 116px;
   max-height: 56px;
   align-items: center;
+}
+
+.sidebar__user-info {
+  display: flex;
 }
 
 .sidebar__avatar-image {
@@ -17,4 +20,14 @@
   font-size: 20px;
   line-height: 1.2;
   white-space: nowrap;
+}
+
+.sidebar__options {
+  font-family: "CabinetGrotesk-Bold", "Arial Narrow", Arial, sans-serif;
+  font-size: 20px;
+}
+
+.sidebar__options:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
