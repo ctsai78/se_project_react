@@ -36,12 +36,12 @@ const Header = ({ onCreateModal, onSignUpModal, onLogInModal, loggedIn }) => {
               +Add Clothes
             </button>
             <Link to="/profile" className="header__avatar-name">
-              {/* ${currentUser.name}  */}
-              Terrence Tegegne
+              ${currentUser.name}
+              {/* Terrence Tegegne */}
             </Link>
 
-            <img src={avatarImage} alt="avatar" />
-            {/* <img src={currentUser.avatar} alt="avatar" /> */}
+            {/* <img src={avatarImage} alt="avatar" /> */}
+            <img src={currentUser.avatarUrl} alt="avatar" />
           </div>
         ) : (
           <div className="header__registration">
