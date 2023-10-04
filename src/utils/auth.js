@@ -3,13 +3,13 @@ import { processServerResponse } from "./weatherApi";
 const baseUrl = "http://localhost:3001";
 
 // signup
-const creatUser = ({ name, avatar, email, password }) => {
+const creatUser = ({ name, avatarUrl, email, password }) => {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, avatar, email, password }),
+    body: JSON.stringify({ name, avatarUrl, email, password }),
   }).then(processServerResponse);
 };
 

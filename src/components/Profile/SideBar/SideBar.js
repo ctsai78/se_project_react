@@ -2,7 +2,7 @@ import React from "react";
 import "./SideBar.css";
 import avatarImage from "../../../images/avatar.svg";
 
-function SideBar({ onEditProfile }) {
+function SideBar({ onEditProfile, onLogOut }) {
   return (
     <section className="sidebar">
       <div className="sidebar__user-info">
@@ -16,7 +16,9 @@ function SideBar({ onEditProfile }) {
       <h3 className="sidebar__options" onClick={onEditProfile}>
         Change profile data
       </h3>
-      <h3 className="sidebar__options">Log out</h3>
+      <h3 className="sidebar__options" onClick={onLogOut}>
+        Log out
+      </h3>
     </section>
   );
 }

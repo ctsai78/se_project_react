@@ -20,6 +20,7 @@ import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../Profile/EditProfileModal/EditProfileModal";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -29,7 +30,7 @@ function App() {
   const [clothingItems, setClothingItems] = useState([]);
   const [loggedIn, setloggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState("");
-
+  const history = useHistory();
   /* -------------------------------- handlers -------------------------------- */
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -78,6 +79,7 @@ function App() {
       .then((newUser) => {
         setloggedIn(true);
         setCurrentUser(newUser);
+        handleCloseModal();
         console.log(currentUser);
       })
       .catch(console.error);
@@ -91,7 +93,11 @@ function App() {
     auth
       .login(user)
       .then((res) => {
+        setCurrentUser(res);
         localStorage.setItem("jwt", res.token);
+        setloggedIn(true);
+        handleCloseModal();
+        console.log(currentUser);
       })
       .catch(console.error);
   };
@@ -101,6 +107,12 @@ function App() {
   };
 
   const handleSaveChanges = () => {};
+
+  const handleLogOut = () => {
+    localStorage.removeItem("jwt");
+    setloggedIn(false);
+    history.push("/");
+  };
   /* ----------------------------- useEffect Hooks ---------------------------- */
   useEffect(() => {
     api
@@ -135,23 +147,23 @@ function App() {
     };
   }, [activeModal]); // watch activeModal here
 
-  useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      auth
-        .getContent(jwt)
-        .then((res) => {
-          if (res) {
-            const currentUser = {
-              username: res.name,
-              email: res.email,
-            };
-            setloggedIn(true);
-          }
-        })
-        .catch(console.error);
-    }
-  });
+  // useEffect(() => {
+  //   const jwt = localStorage.getItem("jwt");
+  //   if (jwt) {
+  //     auth
+  //       .getContent(jwt)
+  //       .then((res) => {
+  //         if (res) {
+  //           const currentUser = {
+  //             username: res.name,
+  //             email: res.email,
+  //           };
+  //           setloggedIn(true);
+  //         }
+  //       })
+  //       .catch(console.error);
+  //   }
+  // });
   /* --------------------------------------------------------------------------- */
 
   return (
@@ -181,6 +193,7 @@ function App() {
                 onSelectCard={handleSelectedCard}
                 onCreateModal={handleCreateModal}
                 onEditProfile={handleEditProfileModal}
+                onLogOut={handleLogOut}
               />
             </Route>
           </Switch>

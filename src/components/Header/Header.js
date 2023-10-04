@@ -44,9 +44,13 @@ const Header = ({ onCreateModal, onSignUpModal, onLogInModal, loggedIn }) => {
             {/* <img src={currentUser.avatar} alt="avatar" /> */}
           </div>
         ) : (
-          <div>
-            <button onClick={onSignUpModal}>Sign Up</button>
-            <button onClick={onLogInModal}>Log In</button>
+          <div className="header__registration">
+            <button className="header__reg-button" onClick={onSignUpModal}>
+              Sign Up
+            </button>
+            <button className="header__reg-button" onClick={onLogInModal}>
+              Log In
+            </button>
           </div>
         )}
       </div>

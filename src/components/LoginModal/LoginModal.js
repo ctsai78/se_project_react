@@ -32,8 +32,8 @@ const LoginModal = ({ handleCloseModal, onLogin, onSignUpModal }) => {
         <h3 className="modal_form-input-title">Email*</h3>
         <input
           className="modal_form-input"
-          type="url"
-          name="link"
+          type="email"
+          name="email"
           value={email}
           onChange={handleEmailChange}
           placeholder="Email"

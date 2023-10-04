@@ -50,3 +50,22 @@
   font-size: 20px;
   line-height: 1.2;
 }
+
+.header__registration {
+  display: flex;
+  gap: 20px;
+}
+
+.header__reg-button {
+  font-family: "CabinetGrotesk-Bold", "Arial Narrow", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  border: none;
+  background-color: white;
+  padding: 0;
+}
+
+.header__reg-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}

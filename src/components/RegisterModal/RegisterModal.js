@@ -44,7 +44,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
         <input
           className="modal_form-input"
           type="email"
-          name="link"
+          name="email"
           value={email}
           onChange={handleEmailChange}
           placeholder="Email"
