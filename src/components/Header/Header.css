@@ -51,6 +51,13 @@
   line-height: 1.2;
 }
 
+.header__avatar-img {
+  border: rgba(0, 0, 0, 0.5);
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
 .header__registration {
   display: flex;
   gap: 20px;

@@ -97,7 +97,6 @@ function App() {
         localStorage.setItem("jwt", res.token);
         setloggedIn(true);
         handleCloseModal();
-        console.log(currentUser);
       })
       .catch(console.error);
   };

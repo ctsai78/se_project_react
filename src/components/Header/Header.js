@@ -1,6 +1,5 @@
 import "./Header.css";
 import logoImage from "../../images/logo.svg";
-import avatarImage from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -13,7 +12,9 @@ const formattedDate = `${month} ${day}, New York`;
 /* -------------------------------------------------------------------------- */
 
 const Header = ({ onCreateModal, onSignUpModal, onLogInModal, loggedIn }) => {
-  const { currentUser } = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
+  const avatarImage = currentUser.avatarUrl;
+
   return (
     <header className="header">
       <div className="header__logo">
@@ -36,12 +37,13 @@ const Header = ({ onCreateModal, onSignUpModal, onLogInModal, loggedIn }) => {
               +Add Clothes
             </button>
             <Link to="/profile" className="header__avatar-name">
-              ${currentUser.name}
-              {/* Terrence Tegegne */}
+              {currentUser.name}
             </Link>
-
-            {/* <img src={avatarImage} alt="avatar" /> */}
-            <img src={currentUser.avatarUrl} alt="avatar" />
+            <img
+              src={avatarImage}
+              className="header__avatar-img"
+              alt="avatar"
+            />
           </div>
         ) : (
           <div className="header__registration">
