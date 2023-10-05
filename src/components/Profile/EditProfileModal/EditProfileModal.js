@@ -7,7 +7,8 @@ const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
   /* ------------------------------ Set handlers ------------------------------ */
   const currentUser = useContext(CurrentUserContext);
   const _id = currentUser._id;
-  const token = currentUser.token;
+  const token = localStorage.getItem("jwt");
+
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -21,6 +22,7 @@ const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSaveChanges({ name, avatarUrl, _id, token });
+    console.log(_id);
   };
   /* -------------------------------------------------------------------------- */
   return (

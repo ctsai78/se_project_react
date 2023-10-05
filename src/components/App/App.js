@@ -82,6 +82,7 @@ function App() {
         setCurrentUser(newUser.data);
         handleCloseModal();
         localStorage.setItem("jwt", newUser.token);
+        console.log(currentUser);
       })
       .catch(console.error);
   };
@@ -98,6 +99,7 @@ function App() {
         localStorage.setItem("jwt", res.token);
         setloggedIn(true);
         handleCloseModal();
+        console.log(currentUser);
       })
       .catch(console.error);
   };
@@ -175,7 +177,7 @@ function App() {
         })
         .catch(console.error);
     }
-  });
+  }, []);
   // /* --------------------------------------------------------------------------- */
 
   return (
