@@ -53,6 +53,7 @@
   margin-right: 32px;
   margin-bottom: 20px;
   font-family: "CabinetGrotesk-Bold", "Arial Narrow", Arial, sans-serif;
+  visibility: visible;
 }
 
 .modal_delete:hover {

@@ -157,25 +157,25 @@ function App() {
     };
   }, [activeModal]); // watch activeModal here
 
-  // useEffect(() => {
-  //   const jwt = localStorage.getItem("jwt");
-  //   if (jwt) {
-  //     auth
-  //       .getContent(jwt)
-  //       .then((res) => {
-  //         if (res) {
-  //           const currentUser = {
-  //             name: res.name,
-  //             email: res.email,
-  //             avatarUrl: res.avatarUrl,
-  //           };
-  //           setCurrentUser(currentUser);
-  //           setloggedIn(true);
-  //         }
-  //       })
-  //       .catch(console.error);
-  //   }
-  // });
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      auth
+        .getContent(jwt)
+        .then((res) => {
+          if (res) {
+            const currentUser = {
+              name: res.name,
+              email: res.email,
+              avatarUrl: res.avatarUrl,
+            };
+            setCurrentUser(currentUser);
+            setloggedIn(true);
+          }
+        })
+        .catch(console.error);
+    }
+  });
   // /* --------------------------------------------------------------------------- */
 
   return (
