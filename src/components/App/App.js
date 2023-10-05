@@ -77,10 +77,11 @@ function App() {
     auth
       .creatUser(user)
       .then((newUser) => {
+        console.log(newUser);
         setloggedIn(true);
-        setCurrentUser(newUser);
+        setCurrentUser(newUser.data);
         handleCloseModal();
-        console.log(currentUser);
+        localStorage.setItem("jwt", newUser.token);
       })
       .catch(console.error);
   };
@@ -105,7 +106,17 @@ function App() {
     setActiveModal("editProfile");
   };
 
-  const handleSaveChanges = () => {};
+  const handleSaveChanges = (editUser) => {
+    auth
+      .editProfile(editUser)
+      .then((newUser) => {
+        console.log(newUser);
+        setCurrentUser(newUser.data);
+        handleCloseModal();
+        localStorage.setItem("jwt", newUser.token);
+      })
+      .catch(console.error);
+  };
 
   const handleLogOut = () => {
     localStorage.removeItem("jwt");
@@ -154,16 +165,18 @@ function App() {
   //       .then((res) => {
   //         if (res) {
   //           const currentUser = {
-  //             username: res.name,
+  //             name: res.name,
   //             email: res.email,
+  //             avatarUrl: res.avatarUrl,
   //           };
+  //           setCurrentUser(currentUser);
   //           setloggedIn(true);
   //         }
   //       })
   //       .catch(console.error);
   //   }
   // });
-  /* --------------------------------------------------------------------------- */
+  // /* --------------------------------------------------------------------------- */
 
   return (
     <div>

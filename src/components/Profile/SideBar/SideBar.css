@@ -6,6 +6,7 @@
 
 .sidebar__user-info {
   display: flex;
+  width: 229px;
 }
 
 .sidebar__avatar-image {
@@ -13,6 +14,7 @@
   height: 56px;
   border: rgba(0, 0, 0, 0.5) 1px;
   margin-right: 16px;
+  border-radius: 28px;
 }
 
 .sidebar__avatar-name {

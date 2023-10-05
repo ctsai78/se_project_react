@@ -9,7 +9,7 @@ const creatUser = ({ name, avatarUrl, email, password }) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, avatarUrl, email, password }),
+    body: JSON.stringify({ name, email, avatarUrl, password }),
   }).then(processServerResponse);
 };
 
@@ -26,7 +26,7 @@ const login = ({ email, password }) => {
 
 // check token
 const getContent = (token) => {
-  return fetch(`${baseUrl}/user/me`, {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -35,5 +35,18 @@ const getContent = (token) => {
   }).then(processServerResponse);
 };
 
-const auth = { creatUser, login, getContent };
+// edit user profile
+
+const editProfile = ({ name, avatarUrl, _id, token }) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatarUrl, _id }),
+  }).then(processServerResponse);
+};
+
+const auth = { creatUser, login, getContent, editProfile };
 export default auth;
