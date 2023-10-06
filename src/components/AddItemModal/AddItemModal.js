@@ -4,6 +4,8 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   /* ------------------------------ Set handlers ------------------------------ */
+  const token = localStorage.getItem("jwt");
+
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -21,7 +23,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, imageUrl, weather });
+    onAddItem({ name, imageUrl, weather, token });
   };
   /* -------------------------------------------------------------------------- */
 
@@ -79,7 +81,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             name="weather"
             onChange={handleWeatherChange}
           />
-          <label>warm</label>
+          <label>Warm</label>
         </div>
         <div className="modal_selection-item">
           <input
@@ -89,7 +91,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             name="weather"
             onChange={handleWeatherChange}
           />
-          <label>cold</label>
+          <label>Cold</label>
         </div>
       </div>
     </ModalWithForm>

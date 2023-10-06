@@ -1,7 +1,7 @@
 import { processServerResponse } from "./weatherApi";
 
-// const baseUrl = "http://localhost:3001";
-const baseUrl = "https://my-json-server.typicode.com/ctsai78/se_project_react";
+const baseUrl = "http://localhost:3001";
+// const baseUrl = "https://my-json-server.typicode.com/ctsai78/se_project_react";
 
 const getItemList = () => {
   return fetch(`${baseUrl}/items`, {

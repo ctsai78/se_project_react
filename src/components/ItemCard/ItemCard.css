@@ -8,9 +8,10 @@
   background-size: contain;
   position: relative;
   top: -311px;
+  left: -10px;
   width: fit-content;
-  height: 0;
-  padding: 0 10px 0 10px;
+  height: fit-content;
+  padding: 2px 12px 2px 12px;
   border-radius: 4px;
   margin: auto;
   font-family: "CabinetGrotesk-Medium";
@@ -26,6 +27,19 @@
 }
 
 .card_image:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.card_like-button {
+  position: relative;
+  top: -287px;
+  left: -120px;
+  width: 18px;
+  height: 15px;
+}
+
+.card_like-button:hover {
   cursor: pointer;
   opacity: 0.8;
 }

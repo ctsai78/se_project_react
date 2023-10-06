@@ -27,6 +27,7 @@
 
 .modal_image {
   margin: 0;
+  height: 496px;
   width: 496px;
   border-radius: 16px 16px 0 0;
   position: relative;
