@@ -3,15 +3,16 @@ import React, { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemModal = ({ selectedCard, onClose, onDeleteCard }) => {
-  const { currentUser } = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
+  const token = localStorage.getItem("jwt");
 
   // Checking if the current user is the owner of the current clothing item
-  // const isOwn = selectedCard.owner._id === currentUser._id;
+  const isOwn = selectedCard.owner === currentUser._id;
 
   // Creating a variable which you'll then set in `className` for the delete button
-  // const itemDeleteButtonClassName = `item__delete-button ${
-  //   isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
-  // }`;
+  const modalDeleteClass = `modal_delete-button ${
+    isOwn ? "modal_delete-button_visible" : "modal_delete-button_hidden"
+  }`;
 
   return (
     <div className={`modal`}>
@@ -35,8 +36,8 @@ const ItemModal = ({ selectedCard, onClose, onDeleteCard }) => {
             </div>
           </div>
           <div
-            className="modal_delete itemDeleteButtonClassName"
-            onClick={() => onDeleteCard(selectedCard)}
+            className={modalDeleteClass}
+            onClick={() => onDeleteCard(selectedCard, token)}
           >
             Delete item
           </div>

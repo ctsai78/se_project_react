@@ -58,7 +58,6 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
           onChange={handleUrlChange}
           placeholder="image URL"
           minLength="1"
-          // maxLength="999"
         ></input>
       </label>
       <p className="modal_selection-title">Select the weather type:</p>

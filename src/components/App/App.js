@@ -48,15 +48,16 @@ function App() {
     api
       .addItem(item)
       .then((newItem) => {
-        setClothingItems([newItem, ...clothingItems]);
+        setClothingItems([newItem.data, ...clothingItems]);
         handleCloseModal();
       })
       .catch(console.error);
   };
 
-  const handleDeleteCard = (card) => {
+  const handleDeleteCard = (card, token) => {
+    console.log(card._id);
     api
-      .removeItem(card.id)
+      .removeItem(card._id, token)
       .then(() => {
         setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
         handleCloseModal();
@@ -166,12 +167,7 @@ function App() {
         .getContent(jwt)
         .then((res) => {
           if (res) {
-            const currentUser = {
-              name: res.name,
-              email: res.email,
-              avatarUrl: res.avatarUrl,
-            };
-            setCurrentUser(currentUser);
+            setCurrentUser(res);
             setloggedIn(true);
           }
         })

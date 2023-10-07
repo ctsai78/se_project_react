@@ -47,17 +47,23 @@
   font-family: "CabinetGrotesk-Bold", "Arial Narrow", Arial, sans-serif;
 }
 
-.modal_delete {
+.modal_delete-button {
   color: red;
   font-size: 20px;
   line-height: 1.2;
   margin-right: 32px;
   margin-bottom: 20px;
   font-family: "CabinetGrotesk-Bold", "Arial Narrow", Arial, sans-serif;
+}
+.modal_delete-button_visible {
   visibility: visible;
 }
 
-.modal_delete:hover {
+.modal_delete-button_hidden {
+  visibility: hidden;
+}
+
+.modal_delete-button:hover {
   cursor: pointer;
   opacity: 0.8;
 }
