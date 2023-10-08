@@ -24,7 +24,6 @@ const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSaveChanges({ name, avatarUrl, _id, token });
-    console.log(_id);
   };
   /* -------------------------------------------------------------------------- */
   return (

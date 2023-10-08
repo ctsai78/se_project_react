@@ -132,11 +132,9 @@ function App() {
 
   const handleLikeClick = (id, isLiked, user) => {
     const token = localStorage.getItem("jwt");
-    // Check if this card is now liked
     isLiked
-      ? // if so, send a request to remove the user's id from the card's likes array
-        api
-          // the first argument is the card's id
+      ? api
+
           .removeCardLike(id, user, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
@@ -144,9 +142,8 @@ function App() {
             );
           })
           .catch((err) => console.log(err))
-      : // if not, send a request to add the user's id to the card's likes array
-        api
-          // the first argument is the card's id
+      : api
+
           .addCardLike(id, user, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
