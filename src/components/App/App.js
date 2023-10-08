@@ -132,7 +132,7 @@ function App() {
     history.push("/");
   };
 
-  const handleLikeClick = ({ id, isLiked, user }) => {
+  const handleLikeClick = (id, isLiked, user) => {
     const token = localStorage.getItem("jwt");
     // Check if this card is now liked
     isLiked

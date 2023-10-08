@@ -27,7 +27,7 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
   }`;
 
   // card like handler
-  const handleLikeClick = () => onCardLike(item._id, isLiked, currentUser);
+  // const handleLikeClick = () => onCardLike(item._id, isLiked, currentUser);
 
   return (
     <div className="card">
