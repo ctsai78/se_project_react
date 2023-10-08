@@ -19,6 +19,8 @@ const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
     setAvatarUrl(e.target.value);
   };
 
+  const isEnabled = name.length > 0 && avatarUrl.length > 0;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSaveChanges({ name, avatarUrl, _id, token });
@@ -31,6 +33,7 @@ const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
       buttonText="Save changes"
       onClose={handleCloseModal}
       onSubmit={handleSubmit}
+      isEnabled={isEnabled}
     >
       <label>
         <h3 className="modal_form-input-title">Name</h3>
