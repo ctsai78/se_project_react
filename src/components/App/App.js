@@ -117,10 +117,8 @@ function App() {
         setCurrentUser(newUser.data);
         handleCloseModal();
         // localStorage.setItem("jwt", newUser.token);
-        debugger;
       })
       .catch((err) => {
-        debugger;
         console.error(err);
       });
   };
@@ -142,7 +140,7 @@ function App() {
           .removeCardLike(id, user, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err))
@@ -152,7 +150,7 @@ function App() {
           .addCardLike(id, user, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err));

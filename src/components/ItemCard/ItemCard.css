@@ -1,19 +1,23 @@
 .card {
   position: relative;
 }
-
+.card_title {
+  display: flex;
+  position: relative;
+  align-items: center;
+  gap: 10px;
+  top: -330px;
+  left: 116px;
+}
 .card_name {
   text-align: center;
   background-color: rgba(255, 255, 255, 1);
   background-size: contain;
   position: relative;
-  top: -311px;
-  left: -10px;
   width: fit-content;
   height: fit-content;
   padding: 2px 12px 2px 12px;
   border-radius: 4px;
-  margin: auto;
   font-family: "CabinetGrotesk-Medium";
   font-size: 16px;
   color: rgba(0, 0, 0, 0.6);
@@ -33,8 +37,6 @@
 
 .card_like-button {
   position: relative;
-  top: -287px;
-  left: -120px;
   width: 18px;
   height: 15px;
 }

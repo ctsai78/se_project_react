@@ -26,9 +26,6 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
     isAuthorized ? "card_like-button_visible" : "card_like-button_hidden"
   }`;
 
-  // card like handler
-  // const handleLikeClick = () => onCardLike(item._id, isLiked, currentUser);
-
   return (
     <div className="card">
       <img
@@ -37,13 +34,14 @@ const ItemCard = ({ item, onSelectCard, onCardLike }) => {
         onClick={() => onSelectCard(item)}
         alt="Card Image"
       />
-      <img
-        className={cardLikeButton}
-        src={itemLikeButtonSrc}
-        // onClick={handleLikeClick}
-        onClick={() => onCardLike(item._id, isLiked, currentUser)}
-      />
-      <p className="card_name">{item.name}</p>
+      <div className="card_title">
+        <p className="card_name">{item.name}</p>
+        <img
+          className={cardLikeButton}
+          src={itemLikeButtonSrc}
+          onClick={() => onCardLike(item._id, isLiked, currentUser)}
+        />
+      </div>
     </div>
   );
 };
