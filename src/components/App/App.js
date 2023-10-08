@@ -23,6 +23,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useHistory } from "react-router-dom";
 
 function App() {
+  /* ----------------------------- state variable ----------------------------- */
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -55,11 +56,10 @@ function App() {
   };
 
   const handleDeleteCard = (card, token) => {
-    console.log(card._id);
     api
       .removeItem(card._id, token)
       .then(() => {
-        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        setClothingItems((cards) => cards.filter((c) => c._id !== card._id));
         handleCloseModal();
       })
       .catch(console.error);
@@ -116,15 +116,46 @@ function App() {
         console.log(newUser);
         setCurrentUser(newUser.data);
         handleCloseModal();
-        localStorage.setItem("jwt", newUser.token);
+        // localStorage.setItem("jwt", newUser.token);
+        debugger;
       })
-      .catch(console.error);
+      .catch((err) => {
+        debugger;
+        console.error(err);
+      });
   };
 
   const handleLogOut = () => {
+    setCurrentUser("");
     localStorage.removeItem("jwt");
     setloggedIn(false);
     history.push("/");
+  };
+
+  const handleLikeClick = ({ id, isLiked, user }) => {
+    const token = localStorage.getItem("jwt");
+    // Check if this card is now liked
+    isLiked
+      ? // if so, send a request to remove the user's id from the card's likes array
+        api
+          // the first argument is the card's id
+          .removeCardLike(id, user, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err))
+      : // if not, send a request to add the user's id to the card's likes array
+        api
+          // the first argument is the card's id
+          .addCardLike(id, user, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err));
   };
   /* ----------------------------- useEffect Hooks ---------------------------- */
   useEffect(() => {
@@ -194,6 +225,7 @@ function App() {
                 clothingItems={clothingItems}
                 weatherTemp={temp}
                 onSelectCard={handleSelectedCard}
+                onCardLike={handleLikeClick}
               />
             </Route>
             <Route path="/profile">
@@ -204,6 +236,7 @@ function App() {
                 onCreateModal={handleCreateModal}
                 onEditProfile={handleEditProfileModal}
                 onLogOut={handleLogOut}
+                onCardLike={handleLikeClick}
               />
             </Route>
           </Switch>
