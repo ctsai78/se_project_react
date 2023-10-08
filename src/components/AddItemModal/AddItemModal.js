@@ -21,6 +21,9 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
     setWeather(e.target.value);
   };
 
+  const isEnabled =
+    name.length > 0 && imageUrl.length > 0 && weather.length > 0;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddItem({ name, imageUrl, weather, token });
@@ -34,6 +37,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      isEnabled={isEnabled}
     >
       <label>
         <h3 className="modal_form-input-title">Name</h3>

@@ -9,7 +9,12 @@ const ModalWithForm = ({
   altText,
   onSubmit,
   altSubmit,
+  isEnabled,
 }) => {
+  const submitButtonClass = `modal_submit-button ${
+    isEnabled ? "modal_submit-button_enabled" : "modal_submit-button_disabled"
+  }`;
+
   return (
     <div className={`modal modal_type_${name}`}>
       <div className="modal_content">
@@ -22,7 +27,11 @@ const ModalWithForm = ({
         <form onSubmit={onSubmit} className="modal_form">
           {children}
           <div>
-            <button className="modal_submit-button" type="submit">
+            <button
+              className={submitButtonClass}
+              type="submit"
+              disabled={!isEnabled}
+            >
               {buttonText}
             </button>
             <button className="modal_alt-submit-button" onClick={altSubmit}>

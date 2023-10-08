@@ -14,6 +14,8 @@ const LoginModal = ({ handleCloseModal, onLogin, onSignUpModal }) => {
     setPassword(e.target.value);
   };
 
+  const isEnabled = email.length > 0 && password.length > 0;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onLogin({ email, password });
@@ -27,6 +29,7 @@ const LoginModal = ({ handleCloseModal, onLogin, onSignUpModal }) => {
       altText="or Register"
       onSubmit={handleSubmit}
       altSubmit={onSignUpModal}
+      isEnabled={isEnabled}
     >
       <label>
         <h3 className="modal_form-input-title">Email*</h3>

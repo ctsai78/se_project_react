@@ -80,12 +80,13 @@
   opacity: 0.8;
 }
 
-.modal_alt-submit-button {
-  background-color: white;
-  border: none;
+.modal_submit-button_disabled {
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .modal_alt-submit-button {
+  background-color: white;
+  border: none;
   padding-left: 16px;
 }
 

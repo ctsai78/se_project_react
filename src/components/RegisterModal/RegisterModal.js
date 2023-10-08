@@ -24,6 +24,12 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
     setPassword(e.target.value);
   };
 
+  const isEnabled =
+    name.length > 0 &&
+    avatarUrl.length > 0 &&
+    email.length > 0 &&
+    password.length > 0;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     onSignUp({ name, avatarUrl, email, password });
@@ -38,6 +44,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
       altText="or Log in"
       onSubmit={handleSubmit}
       altSubmit={onLogInModal}
+      isEnabled={isEnabled}
     >
       <label>
         <h3 className="modal_form-input-title">Email*</h3>
@@ -49,6 +56,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
           onChange={handleEmailChange}
           placeholder="Email"
           minLength="1"
+          required
         ></input>
       </label>
       <label>
@@ -62,6 +70,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
           placeholder="Password"
           minLength="1"
           maxLength="30"
+          required
         ></input>
       </label>
       <label>
@@ -75,6 +84,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
           placeholder="Name"
           minLength="1"
           maxLength="30"
+          required
         ></input>
       </label>
       <label>
@@ -87,6 +97,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
           onChange={handleAvatarChange}
           placeholder="Avatar URL"
           minLength="1"
+          required
         ></input>
       </label>
     </ModalWithForm>
