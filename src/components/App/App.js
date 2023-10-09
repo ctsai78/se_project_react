@@ -114,9 +114,8 @@ function App() {
       .editProfile(editUser)
       .then((newUser) => {
         console.log(newUser);
-        setCurrentUser(newUser.data);
+        setCurrentUser(newUser);
         handleCloseModal();
-        // localStorage.setItem("jwt", newUser.token);
       })
       .catch((err) => {
         console.error(err);
