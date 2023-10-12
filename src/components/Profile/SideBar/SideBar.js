@@ -5,9 +5,9 @@ import { useContext } from "react";
 
 function SideBar({ onEditProfile, onLogOut }) {
   const currentUser = useContext(CurrentUserContext);
-  const avatarImage = currentUser.avatarUrl;
+  const avatarImage = currentUser.avatar;
   const avatarImageExist =
-    currentUser.avatarUrl !== undefined || currentUser.avatarUrl !== null;
+    currentUser.avatar !== undefined || currentUser.avatar !== null;
   console.log(avatarImageExist);
   return (
     <section className="sidebar">

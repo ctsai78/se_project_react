@@ -13,7 +13,7 @@ const formattedDate = `${month} ${day}, New York`;
 
 const Header = ({ onCreateModal, onSignUpModal, onLogInModal, loggedIn }) => {
   const currentUser = useContext(CurrentUserContext);
-  const avatarImage = currentUser.avatarUrl;
+  const avatarImage = currentUser.avatar;
 
   return (
     <header className="header">

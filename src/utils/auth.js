@@ -3,13 +3,13 @@ import { processServerResponse } from "./weatherApi";
 const baseUrl = "http://localhost:3001";
 
 // signup
-const creatUser = ({ name, avatarUrl, email, password }) => {
+const creatUser = ({ name, avatar, email, password }) => {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, email, avatarUrl, password }),
+    body: JSON.stringify({ name, email, avatar, password }),
   }).then(processServerResponse);
 };
 
@@ -37,14 +37,14 @@ const getContent = (token) => {
 
 // edit user profile
 
-const editProfile = ({ name, avatarUrl, _id, token }) => {
+const editProfile = ({ name, avatar, _id, token }) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ name, avatarUrl, _id }),
+    body: JSON.stringify({ name, avatar, _id }),
   }).then((res) => {
     if (res.ok) {
       return res.json();

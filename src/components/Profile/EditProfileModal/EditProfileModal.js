@@ -14,16 +14,16 @@ const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
     setName(e.target.value);
   };
 
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [avatar, setavatar] = useState("");
   const handleAvatarChange = (e) => {
-    setAvatarUrl(e.target.value);
+    setavatar(e.target.value);
   };
 
-  const isEnabled = name.length > 0 && avatarUrl.length > 0;
+  const isEnabled = name.length > 0 && avatar.length > 0;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSaveChanges({ name, avatarUrl, _id, token });
+    onSaveChanges({ name, avatar, _id, token });
   };
   /* -------------------------------------------------------------------------- */
   return (
@@ -53,9 +53,9 @@ const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
           className="modal_form-input"
           type="url"
           name="link"
-          value={avatarUrl}
+          value={avatar}
           onChange={handleAvatarChange}
-          placeholder={currentUser.avatarUrl}
+          placeholder={currentUser.avatar}
           minLength="1"
         ></input>
       </label>

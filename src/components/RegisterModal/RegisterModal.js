@@ -9,9 +9,9 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
     setName(e.target.value);
   };
 
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [avatar, setavatar] = useState("");
   const handleAvatarChange = (e) => {
-    setAvatarUrl(e.target.value);
+    setavatar(e.target.value);
   };
 
   const [email, setEmail] = useState("");
@@ -28,7 +28,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSignUp({ name, avatarUrl, email, password });
+    onSignUp({ name, avatar, email, password });
   };
   /* -------------------------------------------------------------------------- */
 
@@ -89,7 +89,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
           className="modal_form-input"
           type="url"
           name="link"
-          value={avatarUrl}
+          value={avatar}
           onChange={handleAvatarChange}
           placeholder="Avatar URL"
           minLength="1"
