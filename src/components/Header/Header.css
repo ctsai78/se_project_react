@@ -52,7 +52,7 @@
 }
 
 .header__avatar-img {
-  border: rgba(0, 0, 0, 0.5);
+  border: rgba(0, 0, 0, 0.5) 1px solid;
   width: 40px;
   height: 40px;
   border-radius: 20px;

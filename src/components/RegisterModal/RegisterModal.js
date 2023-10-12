@@ -24,11 +24,7 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
     setPassword(e.target.value);
   };
 
-  const isEnabled =
-    name.length > 0 &&
-    avatarUrl.length > 0 &&
-    email.length > 0 &&
-    password.length > 0;
+  const isEnabled = name.length > 0 && email.length > 0 && password.length > 0;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -97,7 +93,6 @@ const RegisterModal = ({ handleCloseModal, onSignUp, onLogInModal }) => {
           onChange={handleAvatarChange}
           placeholder="Avatar URL"
           minLength="1"
-          required
         ></input>
       </label>
     </ModalWithForm>
