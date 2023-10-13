@@ -9,12 +9,12 @@ const EditProfileModal = ({ handleCloseModal, onUserChanges }) => {
   const _id = currentUser._id;
   const token = localStorage.getItem("jwt");
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState(currentUser.name);
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
 
-  const [avatar, setavatar] = useState("");
+  const [avatar, setavatar] = useState(currentUser.avatar);
   const handleAvatarChange = (e) => {
     setavatar(e.target.value);
   };
@@ -40,9 +40,8 @@ const EditProfileModal = ({ handleCloseModal, onUserChanges }) => {
           className="modal_form-input"
           type="text"
           name="name"
-          value={currentUser.name}
+          value={name}
           onChange={handleNameChange}
-          placeholder={currentUser.name}
           minLength="1"
           maxLength="30"
         ></input>
@@ -53,9 +52,8 @@ const EditProfileModal = ({ handleCloseModal, onUserChanges }) => {
           className="modal_form-input"
           type="url"
           name="link"
-          value={currentUser.avatar}
+          value={avatar}
           onChange={handleAvatarChange}
-          // placeholder={currentUser.avatar}
           minLength="1"
         ></input>
       </label>

@@ -21,6 +21,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../Profile/EditProfileModal/EditProfileModal";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useHistory } from "react-router-dom";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   /* ----------------------------- state variable ----------------------------- */
@@ -218,8 +219,7 @@ function App() {
               onCardLike={handleLikeClick}
             />
           </Route>
-          <Route path="/profile">
-            {loggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />}
+          <ProtectedRoute path="/profile" loggedIn={loggedIn}>
             <Profile
               cards={clothingItems}
               onSelectCard={handleSelectedCard}
@@ -228,7 +228,7 @@ function App() {
               onLogOut={handleLogOut}
               onCardLike={handleLikeClick}
             />
-          </Route>
+          </ProtectedRoute>
         </Switch>
         <Footer />
         {activeModal === "create" && (
