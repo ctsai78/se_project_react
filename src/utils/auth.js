@@ -45,12 +45,7 @@ const editProfile = ({ name, avatar, _id, token }) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, avatar, _id }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Error: ${res.status}`);
-  });
+  }).then(processServerResponse);
 };
 
 const auth = { creatUser, login, getContent, editProfile };

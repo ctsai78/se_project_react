@@ -3,7 +3,7 @@ import { useContext } from "react";
 import ModalWithForm from "../../ModalWithForm/ModalWithForm";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
-const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
+const EditProfileModal = ({ handleCloseModal, onUserChanges }) => {
   /* ------------------------------ Set handlers ------------------------------ */
   const currentUser = useContext(CurrentUserContext);
   const _id = currentUser._id;
@@ -23,7 +23,7 @@ const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSaveChanges({ name, avatar, _id, token });
+    onUserChanges({ name, avatar, _id, token });
   };
   /* -------------------------------------------------------------------------- */
   return (
@@ -40,7 +40,7 @@ const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
           className="modal_form-input"
           type="text"
           name="name"
-          value={name}
+          value={currentUser.name}
           onChange={handleNameChange}
           placeholder={currentUser.name}
           minLength="1"
@@ -53,9 +53,9 @@ const EditProfileModal = ({ handleCloseModal, onSaveChanges }) => {
           className="modal_form-input"
           type="url"
           name="link"
-          value={avatar}
+          value={currentUser.avatar}
           onChange={handleAvatarChange}
-          placeholder={currentUser.avatar}
+          // placeholder={currentUser.avatar}
           minLength="1"
         ></input>
       </label>
